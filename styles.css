@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'IBM';
+  src: url('data/fonts/IBM_Plex.ttf') format('truetype');
+  font-weight: 400; 
+  font-style: normal;
+  font-display: swap; 
+}
+
+* {
+    font-family: 'IBM', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #B21EE3 0%, #B21EE3 50%, #999999 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    padding: 20px;
+}
+body {
+  background: linear-gradient(-45deg, #B21EE3, #c9c9c9, #B21EE3, #c9c9c9);
+  background-size: 400% 400%;
+  animation: rgb-gradient 15s ease infinite;
+  height: 100vh;
+  margin: 0;
+}
+
+@keyframes rgb-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.menu{
+    background-color: rgba(217, 217, 217, 0.48);
+    align-self: flex-end;
+    position: fixed;
+    width:149px;
+    height:75px;
+    border-radius: 30px;
+}
+.form{
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    margin-top: 72px;
+    background-color: rgba(217, 217, 217, 0.48); ;
+    width: 370px;
+    height: 392.72px;
+    border-radius: 30px;
+    p{
+        margin-top: 20px ;
+        font-weight: 600;
+        font-size: 23px;
+    }
+}
