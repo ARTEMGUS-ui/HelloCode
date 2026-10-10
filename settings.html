@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Code — Настройки</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="form settings-form">
+        <h1 class="headr">Настройки</h1>
+        
+        <div class="contain">
+            <div class="theme-row">
+                <span class="gl">Тема:</span>
+                <div class="theme-options">
+                    <button class="theme-btn black" id="theme-dark" aria-label="Темная тема"></button>
+                    <button class="theme-btn white" id="theme-light" aria-label="Светлая тема"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="danger-zone">
+            <button class="reset-btn" id="open-settings-modal">Сбросить настройки</button>
+            <button class="reset-btn" id="open-progress-modal">Сбросить прогресс</button>
+        </div>
+    </main>
+
+    <nav class="menu">
+        <a href="index.html" class="cont">
+            <img src="data/Learn.png" alt="Познай">
+            <p>Познай</p>
+        </a>
+        <a href="settings.html" class="cont">
+            <img src="data/Setting.png" alt="Настройки">
+            <p>Настройки</p>
+        </a>
+    </nav>
+
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="modal-card">
+            <p class="modal-text" id="modal-message">Вы уверены, что хотите продолжить действие?</p>
+            <div class="modal-actions">
+                <button class="modal-btn confirm-action" id="modal-confirm-btn">Да</button>
+                <button class="modal-btn cancel-action" id="modal-cancel-btn">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const body = document.body;
+        const btnDark = document.getElementById('theme-dark');
+        const btnLight = document.getElementById('theme-light');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
+        }
+
+        btnDark.addEventListener('click', () => {
+            body.classList.add('dark-theme');
+            localStorage.setItem('theme', 'dark');
+        });
+
+        btnLight.addEventListener('click', () => {
+            body.classList.remove('dark-theme');
+            localStorage.setItem('theme', 'light');
+        });
+
+        const modal = document.getElementById('confirm-modal');
+        const modalMessage = document.getElementById('modal-message');
+        const confirmBtn = document.getElementById('modal-confirm-btn');
+        const cancelBtn = document.getElementById('modal-cancel-btn');
+
+        let activeAction = null;
+
+        function showModal(message, action) {
+            modalMessage.textContent = message;
+            activeAction = action;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            activeAction = null;
+        }
+
+        document.getElementById('open-settings-modal').addEventListener('click', () => {
+            showModal('Вы уверены, что хотите сбросить все настройки?', () => {
+                body.classList.remove('dark-theme');
+                localStorage.setItem('theme', 'light');
+            });
+        });
+
+        document.getElementById('open-progress-modal').addEventListener('click', () => {
+            showModal('Вы уверены, что хотите полностью стереть текущий прогресс?', () => {
+                localStorage.setItem('userProgress', '0');
+                localStorage.setItem('currentLesson', '1');
+            });
+        });
+
+        cancelBtn.addEventListener('click', closeModal);
+        
+        confirmBtn.addEventListener('click', () => {
+            if (activeAction) activeAction();
+            closeModal();
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+
+</body>
+</html>
