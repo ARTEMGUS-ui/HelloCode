@@ -14,6 +14,7 @@
 }
 
 body {
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,16 +22,17 @@ body {
     background: linear-gradient(180deg, #B21EE3 0%, #B21EE3 50%, #999999 100%);
     background-repeat: no-repeat;
     background-attachment: fixed; 
+    background-size: 400% 400%; 
+    animation: rgb-gradient 15s ease infinite;
+    height: 100vh;
     padding: 20px;
 }
-body {
-  background: linear-gradient(-45deg, #B21EE3, #c9c9c9, #B21EE3, #c9c9c9);
-  background-size: 400% 400%;
-  animation: rgb-gradient 15s ease infinite;
-  height: 100vh;
-  margin: 0;
+ul{
+  list-style-position:inside;
 }
-
+li::marker{
+  font-size: 1.5em;
+}
 @keyframes rgb-gradient {
   0% {
     background-position: 0% 50%;
@@ -51,17 +53,45 @@ body {
     border-radius: 30px;
 }
 .form{
-    align-self: flex-start;
+
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     margin-top: 72px;
     background-color: rgba(217, 217, 217, 0.48); ;
     width: 370px;
     height: 392.72px;
     border-radius: 30px;
-    p{
-        margin-top: 20px ;
-        font-weight: 600;
-        font-size: 23px;
-    }
+
+}
+.contain{
+  margin-top:20px;
+  display:flex;
+  flex-direction: column;
+}
+.headr{
+    margin-top: 0px ;
+    font-weight: 600;
+    font-size: 23px;
+}
+.gl{
+  align-self: flex-start;
+  font-size: 23px;
+  font-weight: 600;
+}
+li{
+  font-size:16px;
+  font-weight:500;
+
+}
+.open-course{
+  border: none;
+  padding:10px 20px 10px 20px;
+  color:white;
+  background: #B21EE3;
+  margin-top: 40px;
+  align-self: center;
+}
+.open-course:hover{
+  border:0.5px solid black;
 }
