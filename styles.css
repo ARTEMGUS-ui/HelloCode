@@ -203,6 +203,7 @@ body.dark-theme .cont img {
 .settings-form {
     align-items: flex-start;
     padding: 30px 35px;
+    height: 250px !important;
 }
 
 .settings-form .headr {
@@ -480,15 +481,19 @@ body.dark-theme .quiz-opt-btn {
 }
 
 body.dark-theme .quiz-opt-btn:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .quiz-opt-btn.selected {
     border-color: #B21EE3;
     background-color: rgba(178, 30, 227, 0.15);
 }
+body.dark-theme .quiz-opt-btn.selected {
+    background-color: rgba(255, 255, 255, 0.3);
+}
 
 .quiz-opt-btn.correct {
+    
     background-color: #00CC66 !important;
     color: white !important;
     border-color: #00CC66;
